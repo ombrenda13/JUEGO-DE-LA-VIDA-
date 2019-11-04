@@ -522,10 +522,10 @@ void evaluar_centro(int iteraciones,int matriz[7][7]){
         contador_muertas=0;
     for(i=1;i<6;i++){
         for(j=1;j<6;j++){
-            printf("\n");
-            printf("soy i:%d",i);
+          //  printf("\n");
+           /* printf("soy i:%d",i);
             printf("\nsoy j:%d",j);
-            printf("\n%d",matriz[i][j]);
+            printf("\n%d",matriz[i][j]);*/
             aux=j;
             aux2=j;
            contador_vivas=0;
@@ -533,94 +533,70 @@ void evaluar_centro(int iteraciones,int matriz[7][7]){
 
             if(matriz[i-1][aux]==1){
                 contador_vivas=contador_vivas+1;
-               // printf("\nVIVAS");
-               // printf("%d",contador_vivas);
             }else{
                 contador_muertas=contador_muertas+1;
-                //printf("\nMUERTAS");
-                //printf("%d",contador_muertas);
             }
-
-
              if( matriz[i-1][aux-1]==1){
                 contador_vivas=contador_vivas+1;
-
-
-
             }else{
                 contador_muertas=contador_muertas+1;
-
-
             }
              if( matriz[i-1][aux+1]==1){
                 contador_vivas=contador_vivas+1;
-
-
-
             }else{
                 contador_muertas=contador_muertas+1;
-
-
             }
              if( matriz[i+1][aux]==1){
                 contador_vivas=contador_vivas+1;
-
-
-
             }else{
                 contador_muertas=contador_muertas+1;
-
-
             }
              if( matriz[i+1][aux-1]==1){
                 contador_vivas=contador_vivas+1;
-
-
-
             }else{
                 contador_muertas=contador_muertas+1;
-
             }
              if( matriz[i+1][aux+1]==1){
                 contador_vivas=contador_vivas+1;
-
-
-
             }else{
                 contador_muertas=contador_muertas+1;
-
-
             }
              if( matriz[i][j-1]==1){
                 contador_vivas=contador_vivas+1;
-
-
-
             }else{
                 contador_muertas=contador_muertas+1;
-
             }
              if( matriz[i][j+1]==1){
                 contador_vivas=contador_vivas+1;
-
-
-
             }else{
                 contador_muertas=contador_muertas+1;
+            }
+
+            //evaluando superviencia
+
+            if(matriz[i][j]==1){
+            if(contador_vivas>3){
+                matriz[i][j]=0;
+            }
+            if(contador_vivas<2){
+                matriz[i][j]=0;
+            }
+
+            }
+            if(matriz[i][j]==0){
+                if(contador_vivas==3){
+                    matriz[i][j]=1;
+            }
 
             }
 
-            printf("\nVIVAS");
-            printf("%d",contador_vivas);
-            printf("\nMUERTAS");
-            printf("%d",contador_muertas);
+
+
         }
     }
 
+    imprimir_matriz(matriz);
 }
-
-
-
 
 void imprimir_matriz(int matriz[7][7]){
     int i,j;
