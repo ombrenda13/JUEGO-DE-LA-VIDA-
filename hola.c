@@ -49,7 +49,7 @@ int reglas(){
 
      printf("\n\nregla 1: Para que una celula siga viva, tiene que tener 2 o 3 vecinas. Si tiene mas, muere de SUPERPOBLACION.\n\tSi tiene menos,muere de SOLEDAD");
      printf("\nn regla 2: Si una celula esta MUERTA y tiene 3 vecinas vivas. REVIVE");
-     printf("\n\n 緿esea volver al menu principal?");
+     printf("\n\n 驴Desea volver al menu principal?");
             printf("\t1.- si\t 2.- no\n");
             scanf("%d",&opcion2);
     return opcion2;
@@ -59,12 +59,12 @@ int reglas(){
 int creditos(){
     int opcion2;
     system("cls");
-            printf("=================UNIVERSIDAD NACIONAL AUT覰OMA DE MEXICO=================\n");
+            printf("=================UNIVERSIDAD NACIONAL AUT脫NOMA DE MEXICO=================\n");
             printf("=========================FACULTAD DE INGENIERIA==========================\n");
             printf("=========================BRENDA ORTIZ MARTINEZ===========================\n");
             printf("======================Proyecto final primera parte=======================\n");
 
-            printf("\n 緿esea volver al menu principal?");
+            printf("\n 驴Desea volver al menu principal?");
             printf("1.- si\t 2.- no\n");
             scanf("%d",&opcion2);
     return opcion2;
@@ -113,8 +113,10 @@ void evaluar_esquinas(int iteraciones,int matriz[7][7]){
     //esquina superior izquierda
     for(i=0;i<7;i++){
         for(j=0;j<7;j++){
-            //evaluando la casilla 0,0
+//______________________________________________________________________________________________________________________________________________
             if(i==0 && j==0){
+            printf("esquina ");
+            contador_vivas=0;
             if(matriz[0][1]==1)
             {
                 printf("\ndetecto celula viva\n");
@@ -156,13 +158,29 @@ void evaluar_esquinas(int iteraciones,int matriz[7][7]){
             }
         //termina evaluar casilla 1,1
 
+            //Evaluaci贸n de supervivencia
+            if(matriz[0][0]==1){
+                if(contador_vivas<2){
+                    matriz[0][0]=0;
 
+                }
+
+            }if(matriz[0][0]==0]){
+                if(contador_vivas==3){
+                     matriz[0][0]=1;
+
+                }
+
+            }
+             imprimir_matriz(matriz);
             }//fin esquina superior izquierda
 
 
-
+//_____________________________________________________________________________________________________________________________________-
 //inicio esquina superior derecha
       if(i==0 && j==6){
+            printf("esquina ");
+            contador_vivas=0;
             if(matriz[0][5]==1)
             {
                 printf("\ndetecto celula viva\n");
@@ -175,6 +193,7 @@ void evaluar_esquinas(int iteraciones,int matriz[7][7]){
                 printf("muertas:%d",contador_muertas);
             }
             //termina evaluar casilla 0,0
+
 
             //evaluando la casilla 1,0
 
@@ -207,13 +226,34 @@ void evaluar_esquinas(int iteraciones,int matriz[7][7]){
             }
             //termina evaluar casilla 1,1
 
+                  //Evaluaci贸n de supervivencia
+            if(matriz[0][6]==1){
+                if(contador_vivas<2){
+                    matriz[0][6]=0;
+
+                }
+
+            }
+            if(matriz[0][6]==0){
+                if(contador_vivas==3){
+                     matriz[0][6]=1;
+
+                }
+
+            }
+             imprimir_matriz(matriz);
+
+
+
             }//fin esquina inferior izquierda
 
 
 
-
+//____________________________________________________________________________________________________________________________________________________
           //------------inicio esquina inferior izquierdaa
             if(i==6 && j==0){
+                    printf("esquina ");
+                    contador_vivas=0;
             if(matriz[5][0]==1)
             {
                 printf("\ndetecto celula viva\n");
@@ -257,12 +297,28 @@ void evaluar_esquinas(int iteraciones,int matriz[7][7]){
                 printf("muertas:%d",contador_muertas);
             }
             //termina evaluar casilla 1,1
+              //Evaluaci贸n de supervivencia
+            if(matriz[6][0]==1){
+                if(contador_vivas<2){
+                    matriz[6][0]=0;
+
+                }
+
+            }if(matriz[6][0]==0]){
+                if(contador_vivas==3){
+                     matriz[6][0]=1;
+
+                }
 
             }
+             imprimir_matriz(matriz);
+            }
 
-
+//___________________________________________________________________________________________________________________________________________________________
 //------------inicio esquina inferior derecha
              if(i==6 && j==6){
+                        printf("esquina ");
+                    contador_vivas=0;
             if(matriz[5][6]==1)
             {
                 printf("\ndetecto celula viva\n");
@@ -306,6 +362,21 @@ void evaluar_esquinas(int iteraciones,int matriz[7][7]){
                 printf("muertas:%d",contador_muertas);
             }
             //termina evaluar casilla 1,1
+              //Evaluaci贸n de supervivencia
+            if(matriz[6][6]==1){
+                if(contador_vivas<2){
+                    matriz[6][6]=0;
+
+                }
+
+            }if(matriz[6][6]==0]){
+                if(contador_vivas==3){
+                     matriz[6][6]=1;
+
+                }
+
+            }
+             imprimir_matriz(matriz);
             }
             }//for
 
@@ -314,6 +385,15 @@ void evaluar_esquinas(int iteraciones,int matriz[7][7]){
 
     }
 
+void imprimir_matriz(int matriz[7][7]){
+    int i,j;
+    printf("\n");
+    for(i=0;i<7;i++){
+        for(j=0;j<7;j++){
+            printf("|%d|",matriz[i][j]);
+                   }
+            printf("\n");
+            }
 
-
+}
 
